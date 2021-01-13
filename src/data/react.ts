@@ -42,4 +42,60 @@ export const ReactData: { [key: string]: Block[]; } = {
       },
     },
   ],
+  childParentCommunication: [
+    {
+      texts: [
+        'Child',
+      ],
+      code: {
+        language: 'typescript',
+        code: '(props: {setValue: (value: string) => {};}) => {...}',
+      },
+    },
+    {
+      texts: [
+        'Parent',
+      ],
+      code: {
+        language: 'HTML',
+        code: `<child setValue={(value)=>{ ... }}><child>`,
+      },
+    },
+    {
+      texts: [
+        'Child',
+      ],
+      code: {
+        language: 'typescript',
+        code: `props.setValue('new value')`,
+      },
+    },
+  ],
+  sharingData: [
+    {
+      texts: [
+        'Data is shared using Contexts.'
+      ],
+    },
+  ],
+  componentsThatDontGenerateNodes: [
+    {
+      texts: [
+        'Fragments can be used to not generate any DOM element.',
+      ],
+      code: {
+        language: 'typescript',
+        code: `return (
+  <>
+    It just works!
+  </>
+);`,
+      },
+    },
+    {
+      texts: [
+        'It would not generate any DOM element.',
+      ],
+    },
+  ],
 };

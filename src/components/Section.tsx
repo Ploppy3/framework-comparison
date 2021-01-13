@@ -34,7 +34,7 @@ export const Section = (props: { section: _Section; keySection: string; }) => {
         frameworksContext.frameworks.map((framework, index) => (
           framework.data[props.keySection] &&
           <div key={index}>
-            <NameFramework>{framework.name}</NameFramework>
+            <NameFramework>-- {framework.name}</NameFramework>
             {
               framework.data[props.keySection].map((block, index) => (
                 <Block block={block} key={index}></Block>
