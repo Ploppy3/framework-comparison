@@ -5,14 +5,14 @@ import styled from 'styled-components';
 
 export const SnackBar = (props: { children: ReactNode; opened: boolean; onClose: () => void; }) => {
 
-  const callback = useCallback(() => {
+  const onTimeout = useCallback(() => {
     props.onClose();
   }, [props]);
 
   useEffect(() => {
-    const timer = setTimeout(callback, 2000);
-    return () => clearTimeout(timer);;
-  }, [props, callback]);
+    const timer = setTimeout(onTimeout, 2000);
+    return () => clearTimeout(timer);
+  }, [props, onTimeout]);
 
   const ref = useRef(null);
 
@@ -20,8 +20,7 @@ export const SnackBar = (props: { children: ReactNode; opened: boolean; onClose:
     <CSSTransition in={props.opened} classNames="fade" timeout={500} nodeRef={ref} mountOnEnter unmountOnExit>
       <Wrapper ref={ref}>{props.children}</Wrapper>
     </CSSTransition>;
-  const portal = createPortal(AnimatedSnacBar, document.body);
-  return portal;
+  return createPortal(AnimatedSnacBar, document.body);
 };
 
 const Wrapper = styled.div`
