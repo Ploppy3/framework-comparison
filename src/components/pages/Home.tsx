@@ -8,7 +8,7 @@ import { ReactData } from '../../data/react';
 import { sections } from '../../data/sections';
 import { Section } from '../Section';
 
-const Anchor = styled.a`
+const A = styled.a`
   color: inherit;
 `;
 
@@ -86,7 +86,7 @@ export const Home = () => {
         {
           Object.keys(sections).map((keySection, index) => (
             <li key={index}>
-              <Anchor href={'#' + keySection}>{sections[keySection].name}</Anchor>
+              <A href={'#' + keySection}>{sections[keySection].name}</A>
             </li>
           ))
         }
