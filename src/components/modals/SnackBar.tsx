@@ -1,18 +1,14 @@
-import { ReactNode, useCallback, useEffect, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 
 export const SnackBar = (props: { children: ReactNode; opened: boolean; onClose: () => void; }) => {
 
-  const onTimeout = useCallback(() => {
-    props.onClose();
-  }, [props]);
-
   useEffect(() => {
-    const timer = setTimeout(onTimeout, 2000);
+    const timer = setTimeout(() => props.onClose(), 2000);
     return () => clearTimeout(timer);
-  }, [props, onTimeout]);
+  }, [props]);
 
   const ref = useRef(null);
 
@@ -20,6 +16,7 @@ export const SnackBar = (props: { children: ReactNode; opened: boolean; onClose:
     <CSSTransition in={props.opened} classNames="fade" timeout={500} nodeRef={ref} mountOnEnter unmountOnExit>
       <Wrapper ref={ref}>{props.children}</Wrapper>
     </CSSTransition>;
+
   return createPortal(AnimatedSnacBar, document.body);
 };
 
