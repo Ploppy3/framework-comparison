@@ -4,7 +4,7 @@ import { FrameworksContext } from '../contexts/frameworks.context';
 import { Section as _Section } from '../data/sections';
 import { Block } from './Block';
 import { Link2 } from 'react-feather';
-import { SnackBar } from './SnackBar';
+import { SnackBar } from './modals/SnackBar';
 
 const H2 = styled.h2`
   display: flex;
