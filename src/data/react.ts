@@ -49,7 +49,7 @@ export const ReactData: { [key: string]: Block[]; } = {
       ],
       code: {
         language: 'typescript',
-        code: '(props: {setValue: (value: string) => {};}) => {...}',
+        code: '(props: {setValue: (value: string) => {};}) => { }',
       },
     },
     {
@@ -58,7 +58,7 @@ export const ReactData: { [key: string]: Block[]; } = {
       ],
       code: {
         language: 'HTML',
-        code: `<child setValue={(value)=>{ ... }}><child>`,
+        code: `<div setValue={(value)=>{ }}><div>`,
       },
     },
     {
@@ -85,11 +85,7 @@ export const ReactData: { [key: string]: Block[]; } = {
       ],
       code: {
         language: 'typescript',
-        code: `return (
-  <>
-    It just works!
-  </>
-);`,
+        code: `<>It just works!</>`,
       },
     },
     {
