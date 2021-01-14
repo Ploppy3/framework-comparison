@@ -62,7 +62,10 @@ export const Section = (props: { section: _Section; keySection: string; }) => {
         }
         <span>{props.section.name}</span>
       </H2>
-      <P>{props.section.description}</P>
+      {
+        props.section.description &&
+        <P>{props.section.description}</P>
+      }
       {
         frameworksContext.frameworks.map((framework, index) => (
           framework.data[props.keySection] &&
