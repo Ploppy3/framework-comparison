@@ -58,7 +58,7 @@ export const ReactData: { [key: string]: Block[]; } = {
       ],
       code: {
         language: 'HTML',
-        code: `<div setValue={(value)=>{ }}><div>`,
+        code: `<Child setValue={myCallback}></Child>`,
       },
     },
     {
@@ -74,8 +74,47 @@ export const ReactData: { [key: string]: Block[]; } = {
   sharingData: [
     {
       texts: [
-        'Data is shared using Contexts.'
+        'Data is shared using Contexts.',
+        'Contexts are created using the createContext hook with default values.'
       ],
+      code: {
+        language: 'typescript',
+        code: `const Context = createContext({
+  name: 'default',
+  setName: () => { },
+});`,
+      },
+    },
+    {
+      texts: [
+        'The value of the context is defined.',
+      ],
+      code: {
+        language: 'typescript',
+        code: `const contextValue = {
+  name: 'John',
+  setName: () => { },
+};`,
+      },
+    },
+    {
+      texts: [
+        'The value of the context is then provided in the template to all its children.',
+      ],
+      code: {
+        language: 'HTML',
+        code: `<Context.Provider value={contextValue}>
+</Context.Provider>`,
+      },
+    },
+    {
+      texts: [
+        'The value of the context is accessed using the useContext hook.',
+      ],
+      code: {
+        language: 'typescript',
+        code: `const contextValue = useContext(Context);`,
+      },
     },
   ],
   componentsThatDontGenerateNodes: [
@@ -90,7 +129,7 @@ export const ReactData: { [key: string]: Block[]; } = {
     },
     {
       texts: [
-        'It would not generate any DOM element.',
+        'It will not generate any DOM element.',
       ],
     },
   ],
