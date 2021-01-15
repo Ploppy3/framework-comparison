@@ -7,6 +7,7 @@ import { AngularData } from '../../data/angular';
 import { ReactData } from '../../data/react';
 import { sections } from '../../data/sections';
 import { Section } from '../Section';
+import urlDancing from '../../assets/dancing.gif';
 
 const A = styled.a`
   color: inherit;
@@ -44,6 +45,14 @@ const ButtonUp = styled.button`
   }
   &.fade-exit-active {
     opacity: 0;
+  }
+`;
+
+const WrapperImgDancing = styled.div`
+  display: flex;
+  justify-content: center;
+  & img {
+    max-width: 100%;
   }
 `;
 
@@ -97,6 +106,9 @@ export const Home = () => {
         ))
       }
       <MarginBottom></MarginBottom>
+      <WrapperImgDancing>
+        <img src={urlDancing} alt="dancing" />
+      </WrapperImgDancing>
 
       <CSSTransition in={showButtonScrollTop} nodeRef={refButtonUp} classNames="fade" timeout={500} mountOnEnter unmountOnExit>
         <ButtonUp ref={refButtonUp} onClick={scrollToTop}><ChevronUp /></ButtonUp>
