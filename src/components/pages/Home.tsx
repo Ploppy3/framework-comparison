@@ -13,10 +13,6 @@ const A = styled.a`
   color: inherit;
 `;
 
-const MarginBottom = styled.div`
-  height: 25vh;
-`;
-
 const ButtonUp = styled.button`
   display: flex;
   transition: opacity .5s ease;
@@ -48,12 +44,12 @@ const ButtonUp = styled.button`
   }
 `;
 
-const WrapperImgDancing = styled.div`
-  display: flex;
-  justify-content: center;
-  & img {
-    max-width: 100%;
-  }
+const ImgDancing = styled.img`
+  display: block;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25vh;
 `;
 
 export const Home = () => {
@@ -105,10 +101,7 @@ export const Home = () => {
           <Section keySection={keySection} section={sections[keySection]} key={index}></Section>
         ))
       }
-      <MarginBottom></MarginBottom>
-      <WrapperImgDancing>
-        <img src={urlDancing} alt="dancing" />
-      </WrapperImgDancing>
+      <ImgDancing src={urlDancing} alt="dancing" />
 
       <CSSTransition in={showButtonScrollTop} nodeRef={refButtonUp} classNames="fade" timeout={500} mountOnEnter unmountOnExit>
         <ButtonUp ref={refButtonUp} onClick={scrollToTop}><ChevronUp /></ButtonUp>
