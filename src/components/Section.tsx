@@ -1,21 +1,28 @@
 import React, { useContext, useState } from 'react';
+import { Link2 } from 'react-feather';
 import styled from 'styled-components';
 import { FrameworksContext } from '../contexts/frameworks.context';
 import { Section as _Section } from '../data/sections';
 import { Block } from './Block';
-import { Link2 } from 'react-feather';
+import { HorizontalCollapseAnimation } from './HorizontalCollapseAnimation';
 import { SnackBar } from './modals/SnackBar';
 
-const H2 = styled.h2`
+const WrapperTitle = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 32px;
+  margin-bottom: 16px;
   margin-left: 8px;
   margin-right: 8px;
   border-left: 4px solid #1abc9c;
   padding-left: 8px;
   cursor: pointer;
   & svg{
-    margin-right: 8px;
+    display: block;
+    padding-right: 8px;
+  }
+  & h2{
+    margin: 0;
   }
 `;
 
@@ -51,17 +58,16 @@ export const Section = (props: { section: _Section; keySection: string; }) => {
 
   return (
     <>
-      <H2
+      <WrapperTitle
         id={props.keySection}
         onClick={copyLink}
         onMouseEnter={() => setLinkVisible(true)}
         onMouseLeave={() => setLinkVisible(false)}>
-        {
-          linkVisible &&
+        <HorizontalCollapseAnimation visible={linkVisible}>
           <Link2 />
-        }
-        <span>{props.section.name}</span>
-      </H2>
+        </HorizontalCollapseAnimation>
+        <h2>{props.section.name}</h2>
+      </WrapperTitle>
       {
         props.section.description &&
         <P>{props.section.description}</P>
